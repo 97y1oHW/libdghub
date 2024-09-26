@@ -1,50 +1,49 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
+local InputService = game:GetService('UserInputService')
+local TextService = game:GetService('TextService')
+local CoreGui = game:GetService('CoreGui')
+local Teams = game:GetService('Teams')
+local Players = game:GetService('Players')
 local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
-local RenderStepped = RunService.RenderStepped;
-local LocalPlayer = Players.LocalPlayer;
-local Mouse = LocalPlayer:GetMouse();
+local TweenService = game:GetService('TweenService')
+local RenderStepped = RunService.RenderStepped
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
 
-local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
+local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end)
 
-local ScreenGui = Instance.new('ScreenGui');
-ProtectGui(ScreenGui);
+local ScreenGui = Instance.new('ScreenGui')
+ProtectGui(ScreenGui)
 
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
-ScreenGui.Parent = CoreGui;
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+ScreenGui.Parent = CoreGui
 
-local Toggles = {};
-local Options = {};
+local Toggles = {}
+local Options = {}
 
-getgenv().Toggles = Toggles;
-getgenv().Options = Options;
+getgenv().Toggles = Toggles
+getgenv().Options = Options
 
 local Library = {
-    Registry = {};
-    RegistryMap = {};
-
-    HudRegistry = {};
-
-    FontColor = Color3.fromRGB(255, 255, 255);
-    MainColor = Color3.fromRGB(28, 28, 28);
-    BackgroundColor = Color3.fromRGB(20, 20, 20);
-    AccentColor = Color3.fromRGB(0, 85, 255);
-    OutlineColor = Color3.fromRGB(50, 50, 50);
+    Registry = {},
+    RegistryMap = {},
+    HudRegistry = {},
+    
+    FontColor = Color3.fromRGB(255, 255, 255),
+    MainColor = Color3.fromRGB(28, 28, 28),
+    BackgroundColor = Color3.fromRGB(20, 20, 20),
+    AccentColor = Color3.fromRGB(0, 85, 255),
+    OutlineColor = Color3.fromRGB(50, 50, 50),
     RiskColor = Color3.fromRGB(255, 50, 50),
+    
+    Black = Color3.new(0, 0, 0),
+    Font = Enum.Font.Fantasy,  -- Changed to Fantasy for a pixelated look
+    TextSize = 14,  -- Set to a smaller size
 
-    Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.Code,
-
-    OpenedFrames = {};
-    DependencyBoxes = {};
-
-    Signals = {};
-    ScreenGui = ScreenGui;
-};
+    OpenedFrames = {},
+    DependencyBoxes = {},
+    Signals = {},
+    ScreenGui = ScreenGui,
+}
 
 local RainbowStep = 0
 local Hue = 0
