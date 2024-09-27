@@ -29,7 +29,7 @@ local Library = {
 
     HudRegistry = {};
 
-    FontColor = Color3.fromRGB(60, 115 255);
+    FontColor = Color3.fromRGB(255, 255, 255);
     MainColor = Color3.fromRGB(28, 28, 28);
     BackgroundColor = Color3.fromRGB(20, 20, 20);
     AccentColor = Color3.fromRGB(0, 85, 255);
@@ -37,7 +37,7 @@ local Library = {
     RiskColor = Color3.fromRGB(255, 50, 50),
 
     Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.Garamond,
+    Font = Enum.Font.Code,
 
     OpenedFrames = {};
     DependencyBoxes = {};
@@ -148,7 +148,7 @@ function Library:CreateLabel(Properties, IsHud)
         BackgroundTransparency = 1;
         Font = Library.Font;
         TextColor3 = Library.FontColor;
-        TextSize = 13;
+        TextSize = 16;
         TextStrokeTransparency = 0;
     });
 
