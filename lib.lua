@@ -2932,6 +2932,7 @@ function Library:Notify(Text, Time)
     end);
 end;
 
+
 function Library:CreateWindow(...)
     local Arguments = { ... }
     local Config = { AnchorPoint = Vector2.zero }
@@ -2943,6 +2944,52 @@ function Library:CreateWindow(...)
         Config.AutoShow = Arguments[2] or false;
     end
 
+
+    local Glow = {}
+    Glow.__index = Glow
+
+    function Glow.new(Parent, Color)
+        local GlowEffect = Instance.new('ImageLabel')
+        GlowEffect.BackgroundTransparency = 1
+        GlowEffect.Image = 'rbxassetid://131604521'
+        GlowEffect.ImageColor3 = Color
+        GlowEffect.ImageTransparency = 0.5
+        GlowEffect.ScaleType = Enum.ScaleType.Stretch
+        GlowEffect.Size = UDim2.new(0, 10, 0, 10)
+        GlowEffect.ZIndex = 1
+        GlowEffect.Parent = Parent
+
+        setmetatable(GlowEffect, Glow)
+        return GlowEffect
+    end
+
+    function Glow:Update(Color)
+        self.ImageColor3 = Color
+    end
+        local GlowTL = Glow.new(Outer, Library.AccentColor)
+    GlowTL.Position = UDim2.new(0, 0, 0, 0)
+    GlowTL.Rotation = 0
+
+    local GlowTR = Glow.new(Outer, Library.AccentColor)
+    GlowTR.Position = UDim2.new(1, 0, 0, 0)
+    GlowTR.Rotation = 90
+
+    local GlowBL = Glow.new(Outer, Library.AccentColor)
+    GlowBL.Position = UDim2.new(0, 0, 1, 0)
+    GlowBL.Rotation = 270
+
+    local GlowBR = Glow.new(Outer, Library.AccentColor)
+    GlowBR.Position = UDim2.new(1, 0, 1, 0)
+    GlowBR.Rotation = 180
+
+    -- ...
+
+    function Library:UpdateColorsUsingRegistry()
+        -- ...
+        GlowTL:Update(Library.AccentColor)
+        GlowTR:Update(Library.AccentColor)
+        GlowBL:Update(Library.AccentColor)
+        GlowBR:Update(Library.AccentColor)
     if type(Config.Title) ~= 'string' then Config.Title = 'No title' end
     if type(Config.TabPadding) ~= 'number' then Config.TabPadding = 0 end
     if type(Config.MenuFadeTime) ~= 'number' then Config.MenuFadeTime = 0.2 end
