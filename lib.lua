@@ -825,6 +825,15 @@ do
             ColorPicker:Display()
         end)
 
+        -- Create a new image label
+local BackgroundImage = Library:Create('ImageLabel', {
+    BackgroundTransparency = 1;
+    Image = 'http://www.roblox.com/asset/?id=123456789'; -- Replace with your image ID
+    Size = UDim2.new(1, 0, 1, 0);
+    ZIndex = 0;
+    Parent = Library.ScreenGui;
+})
+
         RgbBox.FocusLost:Connect(function(enter)
             if enter then
                 local r, g, b = RgbBox.Text:match('(%d+),%s*(%d+),%s*(%d+)')
